@@ -1,0 +1,123 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace OOP03_Assignment
+{
+    internal class Shipment
+    {
+        private string trackingCode;
+        private string description;
+        private double weight;
+        private decimal deliveryFee;
+
+
+        public Shipment(string trackingCode)
+        {
+            this.trackingCode = trackingCode;
+            Description = "Unknown";
+            Weight = 1;
+            DeliveryFee = 50;
+            Destination = default;
+
+        }
+        public Shipment(string trackingCode, string description, double weight,
+                decimal deliveryFee, DeliveryAddress destination)
+        {
+            TrackingCode = trackingCode;
+            Description = description;
+            Weight = weight;
+            DeliveryFee = deliveryFee;
+            Destination = destination;
+        }
+        public DeliveryAddress Destination { get; set; }
+
+        public string TrackingCode
+        {
+            get
+            {
+                return trackingCode;
+            }
+            private set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    trackingCode = value;
+                }
+            }
+        }
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    description = value;
+                }
+            }
+
+        }
+
+        public double Weight
+        {
+            get
+            {
+                return weight;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    weight = value;
+                }
+            }
+
+        }
+        public decimal DeliveryFee
+        {
+            get
+            {
+                return deliveryFee;
+            }
+            private set
+            {
+                if (value > 0)
+                {
+                    deliveryFee = value;
+                }
+            }
+
+        }
+
+        public decimal EstimatedCost => deliveryFee + (decimal)(weight * 5);
+
+        public void UpdateDeliveryFee(decimal newFee)
+        {
+            if (newFee > 0) { deliveryFee = newFee; }
+        }
+        public void PrintShipment()
+        {
+            Console.WriteLine($"Tracking Code: {TrackingCode} \n Description: {Description} \n  " +
+                $"Weight: {Weight} \n Delivery Fee: {DeliveryFee} \n Destination: {Destination} \n " +
+                $"Estimated Cost: {EstimatedCost} ");
+        }
+
+
+
+
+
+        public override string ToString()
+        {
+            return $"Tracking Code: {TrackingCode}\n" +
+                   $"Description: {Description}\n" +
+                   $"Weight: {Weight}\n" +
+                   $"Delivery Fee: {DeliveryFee}\n" +
+                   $"Destination: {Destination}\n" +
+                   $"Estimated Cost: {EstimatedCost}\n";
+        }
+    }
+}
