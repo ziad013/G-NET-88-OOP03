@@ -4,7 +4,23 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            #region Question01
+            // a) What is the difference between a class and a struct?
+
+            //  1.Class                                 2.Struct
+            //   1-Reference Tybe                         1-Value Tybe
+            //   2-Stored in Heap                         2-Stored in Stack  
+            //   3-used for complex program               3-used for simple program
+            //   4-support inhertance                     4-doesn’t support inhertance
+
+
+
+
+            //b) Why are classes more suitable than structs for large applications?
+
+            //Because The Previous reasons and easy to maintain
+
+            #endregion
         }
     }
 }
